@@ -42,8 +42,8 @@ function Category() {
          
         
         </div>
-
-      </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-300" />
+      </div> 
     </>
   )
 }

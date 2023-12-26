@@ -21,13 +21,13 @@ function Offers() {
           </div>
         </div>
         <div className="flex gap-4">
-          <a href="#" class="block max-w-lg rounded-lg shadow">
+          <a href="#" className="block max-w-lg rounded-lg shadow">
             <img src="./add2.avif" alt="add1" />
           </a>
-          <a href="#" class="block max-w-lg rounded-lg shadow">
+          <a href="#" className="block max-w-lg rounded-lg shadow">
             <img src="./addd1.avif" alt="add1" />
           </a>
-          <a href="#" class="block max-w-lg rounded-lg shadow">
+          <a href="#" className="block max-w-lg rounded-lg shadow">
             <img src="./add4.avif" alt="add1" />
           </a>
         </div>
