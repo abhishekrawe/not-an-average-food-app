@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faStar } from "@fortawesome/free-solid-svg-icons";
 import { restaurantsList } from "../constant";
 
 function Card() {
+    const [searchInput, setSearchInput] = useState("");
+    const [filteredRestaurants, setFilteredRestaurants] = useState(restaurantsList);
+
+    const handleSearch = () => {
+        const filtered = restaurantsList.filter(
+            (restaurant) =>
+                restaurant.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+                restaurant.areaName.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        setFilteredRestaurants(filtered);
+    };
+
     return (
         <>
             <div className="px-4 md:px-36">
@@ -12,14 +24,23 @@ function Card() {
                         <h1>Restaurants with online food delivery in Patna</h1>
                     </div>
                     <div className="flex gap-4">
-                        <input type="search" className="w-full p-4 ps-10 text-sm rounded-lg border border-gray-700 " placeholder="Search for resturents and food" />
-                        <button className="bg-orange-500 px-4 rounded-lg text-white">Search </button>
+                        <input
+                            type="text"
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                            className="w-full p-4 ps-10 text-sm rounded-lg border border-gray-700 "
+                            placeholder="Search for restaurants and food"
+                        />
+                        <button
+                            className="bg-orange-500 px-4 rounded-lg text-white"
+                            onClick={handleSearch}
+                        >Search </button>
                     </div>
                 </div>
 
                 <div class="container my-6 mx-auto px-4 md:px-12">
                     <div class="flex flex-wrap -mx-1 lg:-mx-16">
-                        {restaurantsList.map((restaurant) => (
+                        {filteredRestaurants.map((restaurant) => (
                             <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
                                 <div class="relative">
                                     <a href="#" class="block">
