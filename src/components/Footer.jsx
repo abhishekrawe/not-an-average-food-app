@@ -6,7 +6,7 @@ function Footer() {
 
 
       <div class="w-full p-4 bg-white border border-gray-200 shadow sm:p-8 dark:bg-gray-200 dark:border-gray-100">
-        <div className="flex justify-center gap-40">
+        {/* <div className="flex justify-center gap-40">
           <div>
             <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-700 text-left">For better experience, download</h5>
             <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-700 text-left">the Swiggy app now.</h5>
@@ -29,7 +29,7 @@ function Footer() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <footer class="bg-white dark:bg-black">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
