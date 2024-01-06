@@ -4,7 +4,7 @@ import { faClock, faStar } from "@fortawesome/free-solid-svg-icons";
 import { restaurantsList } from "../constant";
 
 function filterData(searchInput, restaurants) {
-    return restaurants.filter((restaurant) => restaurant.name.includes(searchInput));
+    return restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchInput.toLowerCase()));
 }
 
 function Card() {
