@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { restaurantsList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faStar } from "@fortawesome/free-solid-svg-icons";
+
 
 function filterData(searchInput, restaurants) {
     return restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchInput.toLowerCase()));
@@ -9,6 +12,18 @@ function filterData(searchInput, restaurants) {
 function Card() {
     const [restaurants, setRestaurants] = useState(restaurantsList)
     const [searchInput, setSearchInput] = useState("");
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
+    
+    const fetchProduct = async () => {
+        const res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await res.json();
+        console.log("DATA" , data);
+        console.log("Actual" , data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setRestaurants(data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
 
 
     return (
@@ -36,12 +51,11 @@ function Card() {
                     </div>
                 </div>
 
-                <div class="container my-6 mx-auto px-4 md:px-12">
-                    <div class="flex flex-wrap -mx-1 lg:-mx-16">
+                <div class="container my-6">
+                    <div class="flex flex-wrap">
                         {restaurants.map((restaurant) => (
-                            <RestaurantCard key={restaurant.id}  restaurant={restaurant}/>
+                            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                         ))}
-
                     </div>
                 </div>
             </div>
