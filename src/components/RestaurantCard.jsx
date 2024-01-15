@@ -21,7 +21,7 @@ function RestaurantCard({ restaurant }) {
     };
 
     return (
-        <div class="w-full sm:w-1/2 md:w-1/4 flex flex-col p-3 transition-all duration-300 hover:scale-110">
+        <div class="w-full flex flex-col transition-all duration-300 hover:scale-110">
             <div class="relative">
                 <a href="#" class="block">
                     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurant?.info?.cloudinaryImageId}`} alt="Product" class="h-52 w-full rounded-xl" />

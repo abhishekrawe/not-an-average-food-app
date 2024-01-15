@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { restaurantsList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faStar } from "@fortawesome/free-solid-svg-icons";
+import Shimmer from "./Shimmer";
+import {Link} from 'react-router-dom';
 
 
 function filterData(searchInput, restaurants) {
-    return restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchInput.toLowerCase()));
+    return restaurants.filter((restaurant) =>
+        restaurant && restaurant.name && restaurant.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
 }
 
 function Card() {
-    const [restaurants, setRestaurants] = useState(restaurantsList)
+    const [restaurants, setRestaurants] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 
     useEffect(() => {
@@ -18,11 +20,10 @@ function Card() {
     }, [])
     
     const fetchProduct = async () => {
-        const res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const res = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
         const data = await res.json();
         console.log("DATA" , data);
-        console.log("Actual" , data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setRestaurants(data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setRestaurants(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
 
@@ -52,11 +53,19 @@ function Card() {
                 </div>
 
                 <div class="container my-6">
-                    <div class="flex flex-wrap">
-                        {restaurants.map((restaurant) => (
-                            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-                        ))}
-                    </div>
+                    {restaurants.length === 0 ? (
+                        <Shimmer/>
+                    ) : (
+                        <div class="flex flex-wrap">
+                            {restaurants.map((restaurant) => (
+                                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-2" key={restaurant?.info?.id}>
+                                    <Link to={"/restaurant/" + restaurant?.info?.id}>
+                                        <RestaurantCard restaurant={restaurant} />
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </>
