@@ -38,7 +38,7 @@ function RestaurantMenu() {
               </div>
               <div className="relative overflow-hidden flex flex-col">
                 <img className="h-20 w-20 object-cover rounded-md"  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.card?.card?.itemCards?.[0]?.card?.info?.imageId}`} />
-                <button className="absolute bg-white text-green-500 px-4 rounded-sm border shadow-2xl bottom-0 left-0 right-0 mx-2 ">Add</button>
+                <button className="absolute bg-green-400 text-white px-4 rounded-md border shadow-2xl bottom-0 left-0 right-0 mx-2 ">Add</button>
               </div>
               
             </div>
@@ -89,7 +89,7 @@ function RestaurantMenu() {
           <div className="mt-6 rounded shadow-inner h-16 p-2 border border-gray-200 text-center">
             <p className="text-green-400"> ⭐ {avgRating}</p>
             <hr />
-            <p className="text-gray-600 font-base   text-sm">{totalRatingsString}</p>
+            <p className="text-gray-600 font-base text-sm">{totalRatingsString}</p>
           </div>
         </div>
 
