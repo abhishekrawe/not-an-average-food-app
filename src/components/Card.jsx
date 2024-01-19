@@ -30,8 +30,8 @@ function Card() {
     return (
         <>
             <div className="px-4 md:px-36">
-                <div className="justify-between flex my-4">
-                    <div className="text-3xl font-bold text-left">
+                <div className="flex md:flex-wrap sm: flex-wrap justify-between my-4 p-5">
+                    <div className="text-3xl font-bold text-left pb-4">
                         <h1>Restaurants with online food delivery in Patna</h1>
                     </div>
                     <div className="flex gap-4">
@@ -39,16 +39,16 @@ function Card() {
                             type="text"
                             value={searchInput}
                             onChange={(e) => setSearchInput(e.target.value)}
-                            className="w-full p-4 ps-10 text-sm rounded-lg border border-gray-700 "
+                            className="w-80 p-4 ps-10 text-sm rounded-lg border border-gray-700 "
                             placeholder="Search for restaurants and food"
                         />
-                        <button
+                        {/* <button
                             className="bg-orange-500 px-4 rounded-lg text-white"
                             onClick={() => {
                                 const data = filterData(searchInput, restaurants);
                                 setRestaurants(data);
                             }}
-                        >Search </button>
+                        >Search </button> */}
                     </div>
                 </div>
 
