@@ -15,8 +15,6 @@ function Card() {
     const [restaurants, setRestaurants] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 
-
-
     const fetchProduct = async () => {
         const res = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
         const data = await res.json();
