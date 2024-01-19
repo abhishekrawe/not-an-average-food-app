@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { restaurantsList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function filterData(searchInput, restaurants) {
     return restaurants.filter((restaurant) =>
-        restaurant && restaurant.name && restaurant.name.toLowerCase().includes(searchInput.toLowerCase())
+        restaurant && restaurant?.info?.name && restaurant?.info?.name?.toLowerCase().includes(searchInput.toLowerCase())
     );
 }
 
@@ -15,15 +15,23 @@ function Card() {
     const [restaurants, setRestaurants] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 
-    useEffect(() => {
-        fetchProduct();
-    }, [])
-    
+
+
     const fetchProduct = async () => {
         const res = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
         const data = await res.json();
-        console.log("DATA" , data);
+        console.log("DATA", data);
         setRestaurants(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
+
+    const handleSearch = (e) => {
+        const input = e.target.value;
+        setSearchInput(input);
+        setRestaurants(filterData(input, restaurants));
     }
 
 
@@ -38,7 +46,7 @@ function Card() {
                         <input
                             type="text"
                             value={searchInput}
-                            onChange={(e) => setSearchInput(e.target.value)}
+                            onChange={handleSearch}
                             className="w-80 p-4 ps-10 text-sm rounded-lg border border-gray-700 "
                             placeholder="Search for restaurants and food"
                         />
@@ -54,7 +62,7 @@ function Card() {
 
                 <div class="container my-6">
                     {restaurants.length === 0 ? (
-                        <Shimmer/>
+                        <Shimmer />
                     ) : (
                         <div class="flex flex-wrap">
                             {restaurants.map((restaurant) => (
