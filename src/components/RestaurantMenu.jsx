@@ -114,19 +114,21 @@ function RestaurantMenu() {
         <p className="text-xl font-bold text-gray-700"> {deliveryTime} MINS </p>
         <p className="text-xl font-bold text-gray-700"> {costForTwoMessage}</p>
       </div>
-      <div className="flex">
+      <div className="flex flex-wrap">
         {nudgeBanners.map((coupon, index) => {
-          console.log('Coupon:', coupon);
+          //console.log('Coupon:', coupon);
           return (
-            <div key={index} className="text-black p-4 m-2 mt-6 rounded shadow-inner h-26 border border-gray-200 text-left bg-red-50">
-              <div className="flex flex-col px-6 gap-2">
-                <div className="flex  gap-5  font-bold text-3xl">
-                  <p className="text-yellow-500">{coupon.discountInfo ? coupon.discountInfo.discountType : 'N/A'}</p>
-                  <p>₹{coupon.minValue}</p>
-                </div>
-                <div className="text-yellow-950 text-sm font-md flex-wrap">
-                  <p className="py-2 font-mono">{coupon.unlockedMessage}</p>
-                  <span className="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-yellow-800 bg-yellow-100 rounded dark:bg-yellow-900 dark:text-yellow-300">{coupon.couponCode}</span>
+            <div key={index} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/2 p-4">
+              <div className="text-black rounded shadow-inner border border-gray-200 text-left bg-red-50 h-full">
+                <div className="flex flex-col gap-2 px-6">
+                  <div className="flex gap-5 font-bold text-3xl pt-2">
+                    <p className="text-yellow-500">{coupon.discountInfo ? coupon.discountInfo.discountType : 'N/A'}</p>
+                    <p>₹{coupon.minValue}</p>
+                  </div>
+                  <div className="text-yellow-950 text-sm font-md flex-wrap pb-3">
+                    <p className="py-2 font-mono">{coupon.unlockedMessage}</p>
+                    <span className="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-yellow-800 bg-yellow-100 rounded dark:bg-yellow-900 dark:text-yellow-300">{coupon.couponCode}</span>
+                  </div>
                 </div>
               </div>
             </div>

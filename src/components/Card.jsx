@@ -11,6 +11,8 @@ function filterData(searchInput, restaurants) {
     );
 }
 
+
+
 function Card() {
     const [restaurants, setRestaurants] = useState([]);
     const [searchInput, setSearchInput] = useState("");
@@ -32,6 +34,19 @@ function Card() {
         setRestaurants(filterData(input, restaurants));
     }
 
+    function handleRatings() {
+        const filteredRestaurants = restaurants.filter(restaurant => restaurant?.info?.avgRating > 4.1);
+        setRestaurants(filteredRestaurants);
+    }
+
+    function fastDelivery() {
+        const filterDelivery = restaurants.filter(restaurant => {
+            return parseInt(restaurant.info.sla.slaString, 10) > 25;
+        });
+        setRestaurants(filterDelivery);
+    }
+
+
 
     return (
         <>
@@ -45,7 +60,7 @@ function Card() {
                             type="text"
                             value={searchInput}
                             onChange={handleSearch}
-                            className="w-80 p-4 ps-10 text-sm rounded-lg border border-gray-700 "
+                            className="w-72 p-4 ps-10 text-sm rounded-lg border border-gray-700 "
                             placeholder="Search for restaurants and food"
                         />
                         {/* <button
@@ -56,6 +71,12 @@ function Card() {
                             }}
                         >Search </button> */}
                     </div>
+                </div>
+
+                <div className="flex gap-1 md:gap-5 px-4">
+                    <button onClick={handleRatings} className="border-gray-700 border rounded-3xl text-black px-6 py-2 focus:outline-none focus:ring focus:ring-orange-200"> Ratings 4.2+ </button>
+                    <button onClick={fastDelivery} className="border-gray-700 border rounded-3xl text-black px-6 py-2 focus:outline-none focus:ring focus:ring-orange-200"> Fast Delivery </button>
+                    <button className="border-gray-700 border  rounded-3xl text-black  px-6 py-2 "> Pure Veg </button>
                 </div>
 
                 <div class="container my-6">
