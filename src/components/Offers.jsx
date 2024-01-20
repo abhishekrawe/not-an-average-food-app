@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Offers() {
-  const data = ["add1.avif", "add2.avif", "add3.avif", "add4.avif", "add5.avif" , "add6.avif" , "add7.avif"];
+  const data = ["add1.avif", "add2.avif", "add3.avif", "add4.avif", "add5.avif" , "add6.avif"];
   const imagesPerPage = 3;
 
   const [startImageIndex, setStartImageIndex] = useState(0);
@@ -18,7 +18,7 @@ function Offers() {
 
   return (
     <>
-      <div className="px-4 md:px-36 py-4">
+      <div className="px-4 md:px-36 pt-28">
         <div className="justify-between flex my-4">
           <div className="text-2xl font-bold text-left">
             <h1>Best offers for You</h1>
