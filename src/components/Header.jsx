@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faGift, faShoppingBag, faUser, faGear } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
+  
+  const cartItems = useSelector(store => store.cart.items);
+  console.log(cartItems);
+
   return (
     <>
       <div className="px-4 md:px-36 py-4 bg-white shadow-md">
@@ -20,7 +24,7 @@ function Header() {
             <Link to="/offer" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:text-orange-500 transition-colors duration-300"><FontAwesomeIcon icon={faGift} className="mr-4" />Offers</Link>
             <Link to="/help" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:text-orange-500 transition-colors duration-300"><FontAwesomeIcon icon={faGear} className="mr-4" />Help</Link>
             <Link to="/signin" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:text-orange-500 transition-colors duration-300"><FontAwesomeIcon icon={faUser} className="mr-4" />Sign In</Link>
-            <Link to="/cart" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:text-orange-500 transition-colors duration-300"><FontAwesomeIcon icon={faShoppingBag} className="mr-4" />Cart</Link>
+            <Link to="/cart" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:text-orange-500 transition-colors duration-300"><FontAwesomeIcon icon={faShoppingBag} className="mr-4" />Cart - {cartItems.length} </Link>
           </div>
         </div>
       </div>

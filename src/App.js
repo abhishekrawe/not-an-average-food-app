@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import React from "react";
 import "./App.css";
 import Card from "./components/Card";
@@ -13,22 +12,26 @@ import Signin from "./pages/Signin";
 import Error from "./pages/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
+    <Provider store={store}>
+      <div className="App">
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/offer" element={<Offer />} />
           <Route path="/help" element={<Help />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/restaurant/:id" element={<RestaurantMenu/>} />
+          <Route path="/restaurant/:id" element={<RestaurantMenu />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 

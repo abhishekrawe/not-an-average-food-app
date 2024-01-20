@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { addItem } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 function RestaurantMenu() {
   const { id } = useParams();
 
   const [resturentmenu, setResturentmenu] = useState({});
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+     dispatch(addItem(item));
+  }
 
   useEffect(() => {
     fetchProduct();
@@ -38,7 +46,7 @@ function RestaurantMenu() {
               </div>
               <div className="relative overflow-hidden flex flex-col">
                 <img className="h-20 w-20 object-cover rounded-md"  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.card?.card?.itemCards?.[0]?.card?.info?.imageId}`} />
-                <button className="absolute bg-green-400 text-white px-4 rounded-md border shadow-2xl bottom-0 left-0 right-0 mx-2 ">Add</button>
+                <button onClick={() => handleAddItem(item)} className="absolute bg-green-400 rounded-md border shadow-2xl bottom-0 left-0 right-0 mx-2 hover:bg-green-600 text-white font-bold px-4 border-b-4 border-green-700 hover:border-green-500 ">Add</button>
               </div>
               
             </div>
