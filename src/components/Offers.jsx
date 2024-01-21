@@ -1,12 +1,12 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 function Offers() {
-  const data = ["add1.avif", "add2.avif", "add3.avif", "add4.avif", "add5.avif" , "add6.avif"];
+  const data = ["add1.avif", "add2.avif", "add3.avif", "add4.avif", "add5.avif", "add6.avif"];
   const imagesPerPage = 3;
 
   const [startImageIndex, setStartImageIndex] = useState(0);
 
-   const handlePrev = () => {
+  const handlePrev = () => {
     setStartImageIndex(
       (startImageIndex - imagesPerPage + data.length) % data.length
     );
@@ -40,7 +40,7 @@ function Offers() {
         <div className="flex gap-4">
           {data.slice(startImageIndex, startImageIndex + imagesPerPage).map((image, index) => (
             <div
-              className="block max-w-lg rounded-lg shadow"
+              className={`block max-w-lg rounded-lg shadow ${index > 0 ? "hidden md:block" : ""}`}
               key={index}
             >
               <img
