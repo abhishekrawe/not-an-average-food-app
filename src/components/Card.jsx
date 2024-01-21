@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { restaurantsList } from "../constant";
+// import { restaurantsList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from 'react-router-dom';

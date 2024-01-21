@@ -16,7 +16,7 @@ function RestaurantMenu() {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [fetchProduct]);
 
   const fetchProduct = async () => {
     const res = await fetch(
@@ -45,7 +45,7 @@ function RestaurantMenu() {
                 <p className="font-normal"> Rs. {item?.card?.card?.itemCards?.[0]?.card?.info?.price / 100 }</p>
               </div>
               <div className="relative overflow-hidden flex flex-col">
-                <img className="h-20 w-20 object-cover rounded-md"  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.card?.card?.itemCards?.[0]?.card?.info?.imageId}`} />
+                <img className="h-20 w-20 object-cover rounded-md"  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.card?.card?.itemCards?.[0]?.card?.info?.imageId}`} alt="card_image"/>
                 <button onClick={() => handleAddItem(item)} className="absolute bg-green-400 rounded-md border shadow-2xl bottom-0 left-0 right-0 mx-2 text-white font-bold px-4 border-b-4 border-green-700 hover:border-green-500 focus:ring focus:ring-green-700 ">Add</button>
               </div>
               
@@ -74,9 +74,7 @@ function RestaurantMenu() {
     city,
     areaName,
     cloudinaryImageId,
-    costForTwoMsg,
     totalRatingsString,
-    totalRatings,
     avgRating,
     costForTwoMessage,
     sla: { deliveryTime } = {},
