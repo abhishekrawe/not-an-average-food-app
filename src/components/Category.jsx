@@ -7,7 +7,7 @@ import { category } from "../constant";
 
 function Category() {
   const [startImageIndex, setStartImageIndex] = useState(0);
-  const imagesPerPage = 2;
+  const imagesPerPage = 7;
 
   const handlePrev = () => {
     setStartImageIndex(
@@ -41,8 +41,9 @@ function Category() {
         </div>
         <div className="flex gap-8">
           <div className=" flex max-w-sm rounded-lg">
-            {category.slice(startImageIndex, startImageIndex + imagesPerPage).map((imageUrl) => (
-              <img src={imageUrl} alt="Category"  className="w-44"/>
+            {category.slice(startImageIndex, startImageIndex + imagesPerPage).map((imageUrl , index) => (
+              <img key={index} src={imageUrl} alt="Category" className={`w-44 ${index >= 2 ? "hidden md:block" : "" // Show only 2 elements on small screens
+                }`} />
             ))}
           </div>
         </div>

@@ -7,7 +7,7 @@ const Cart = () => {
 
   return (
     <>
-      <h1 className="pt-24 text-3xl font-bold text-left px-4">  Total Items - {cartItems.length} </h1>
+      <h1 className="pt-32 text-3xl font-bold text-left px-4">  Total Items - {cartItems.length} </h1>
       <div className="flex">
         <div className="justify-center flex">
           <div className="flex flex-wrap">

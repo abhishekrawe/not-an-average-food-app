@@ -52,10 +52,10 @@ function Card() {
         <>
             <div className="px-4 md:px-36">
                 <div className="flex md:flex-wrap sm: flex-wrap justify-between my-4 p-5">
-                    <div className="text-3xl font-bold text-left pb-4">
+                    <div className="text-3xl font-bold text-center pb-4">
                         <h1>Restaurants with online food delivery in Patna</h1>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 items-center px-6">
                         <input
                             type="text"
                             value={searchInput}
@@ -76,7 +76,6 @@ function Card() {
                 <div className="flex gap-1 md:gap-5 px-4">
                     <button onClick={handleRatings} className="border-gray-700 border rounded-3xl text-black px-6 py-2 focus:outline-none focus:ring focus:ring-orange-200"> Ratings 4.2+ </button>
                     <button onClick={fastDelivery} className="border-gray-700 border rounded-3xl text-black px-6 py-2 focus:outline-none focus:ring focus:ring-orange-200"> Fast Delivery </button>
-                    <button className="border-gray-700 border  rounded-3xl text-black  px-6 py-2 "> Pure Veg </button>
                 </div>
 
                 <div class="container my-6">

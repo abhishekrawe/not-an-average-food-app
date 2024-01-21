@@ -1,6 +1,6 @@
 const FoodItem = ({ title, price, image }) => {
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 flex p-3">
+    <div className="w-full sm:w-1/2 md:w-1/3 flex p-6">
       <img
         className="w-60 h-40 object-cover rounded-3xl"
         src={image}
