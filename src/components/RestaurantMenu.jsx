@@ -26,7 +26,7 @@ function RestaurantMenu() {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [fetchProduct]);
 
   const renderMenu = () => {
     const menuItems =
@@ -54,20 +54,6 @@ function RestaurantMenu() {
         );
       });
   };
-
-  // const renderCategories = () => {
-  //   const categories =
-  //     resturentmenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards ||
-  //     [];
-
-  //   return categories
-  //     .filter(category => category.card.card.categories)
-  //     .map((category, categoryIndex) => (
-  //       <li key={categoryIndex}>
-  //         <div>{category?.title}</div>
-  //       </li>
-  //     ));
-  // };
 
   const {
     name,
