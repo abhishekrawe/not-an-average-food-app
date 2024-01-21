@@ -10,7 +10,7 @@ import Help from "./pages/Help";
 import Offer from "./pages/Offers";
 import Signin from "./pages/Signin";
 import Error from "./pages/Error";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -19,17 +19,17 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/offer" element={<Offer />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/restaurant/:id" element={<RestaurantMenu />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Footer />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/offer" element={<Offer />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/restaurant/:id" element={<RestaurantMenu />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Footer />
       </div>
     </Provider>
   );

@@ -26,7 +26,7 @@ function RestaurantMenu() {
 
   useEffect(() => {
     fetchProduct();
-  }, [fetchProduct]);
+  });
 
   const renderMenu = () => {
     const menuItems =
@@ -54,6 +54,7 @@ function RestaurantMenu() {
         );
       });
   };
+
 
   const {
     name,
